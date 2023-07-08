@@ -1,14 +1,78 @@
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset='utf-8'>
+    <meta name='viewport'
+          content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <!--  fontawsome 아이콘   -->
+    <script src='https://use.fontawesome.com/releases/v6.4.0/js/all.js'></script>
     <title>Sortable To-do List</title>
 </head>
 <body>
 <h1>Sortable To-Do List</h1>
+<div class='box'>
+    <section class='input-filed'>
+        <label>
+            <input type='text' class='new-item' />
+            <button type='button' class='btn add'>추가하기</button>
+        </label>
+    </section>
 
+    <section class='info'>
+        <div class='filter-wrap'>
+            <p class='total-numbers'>총 3개</p>
+            <div class='tags'>
+                <span class='tag red selected'>미완료</span>
+                <span class='tag blue selected'>완료</span>
+            </div>
+        </div>
+        <button type='button' class='btn remove-all'>
+            <i class='icon fa-solid  fa-trash'></i>
+            <span>전체 삭제(3)</span>
+        </button>
+    </section>
+
+    <section class='item-list'>
+        <ul class='items'>
+            <li class='item completed'>
+                <div class='left'>
+                    <div class='check-box'>
+                        <i class='icon fa-solid fa-square-check'></i>
+                    </div>
+                    <p class='content'>아침먹기</p>
+                </div>
+                <div class='right'>
+                    <i class='icon fa-solid fa-trash'></i>
+                    <i class='icon fa-solid fa-grip-vertical'></i>
+                </div>
+            </li>
+            <li class='item dragover'>
+                <div class='left'>
+                    <div class='check-box'>
+                        <i class='icon fa-regular fa-square-check'></i>
+                    </div>
+                    <p class='content'>점심먹기</p>
+                </div>
+                <div class='right'>
+                    <i class='icon fa-solid  fa-trash'></i>
+                    <i class='icon fa-solid fa-grip-vertical'></i>
+                </div>
+            </li>
+            <li class='item dragging'>
+                <div class='left'>
+                    <div class='check-box'>
+                        <i class='icon fa-regular fa-square-check'></i>
+                    </div>
+                    <p class='content'>저녁먹기</p>
+                </div>
+                <div class='right'>
+                    <i class='icon fa-solid  fa-trash'></i>
+                    <i class='icon fa-solid fa-grip-vertical'></i>
+                </div>
+            </li>
+        </ul>
+    </section>
+</div>
 <script src='index.ts'></script>
 </body>
 </html>
