@@ -17,7 +17,7 @@ const isIncluded = (itemId: number): boolean => todoLists.some((i) => i.id === i
 const getIndexOfItem = (id: number) => todoLists.map(i => i.id).indexOf(id);
 
 
-// list를 화면에 보여주는 렌더 함수
+// todoLists 를 화면에 보여주는 렌더 함수
 const render = () => {
     const items = document.querySelector('.items');
     const total = document.querySelector('.total-numbers');
@@ -33,14 +33,11 @@ const render = () => {
             items.innerHTML += `
                 <li id='${item.id}' class='item ${item.isCompleted ? 'completed' : 'uncompleted'}'>
                         <div class='left'>
-                            <span id='btn-check' class='btn-check'>
-                                <i class='icon fa-regular fa-square${item.isCompleted ? '-check' : ''}'></i>
-                            </span>
+                            <span class='btn-check'></span>
                             <p class='content'>${item.content}</p>
                         </div>
                         <div class='right'>
                             <span class='btn-remove'></span>
-                            <span class='btn-drag'></span>
                         </div>
                     </li>
             `;
@@ -74,10 +71,10 @@ const addTodoItem = () => {
     }
 };
 
+// 아이템 삭제
 const removeItem = (itemId: number) => {
     if (isIncluded(itemId)) {
         const indexToRemove = getIndexOfItem(itemId);
-        // 삭제
         todoLists.splice(indexToRemove, 1);
     }
 };
@@ -90,13 +87,14 @@ const removeAllItems = () => {
     });
 };
 
-const insertItem = (item: ToDoItem, itemToNext: ToDoItem) => {
-    const nextIndex = getIndexOfItem(itemToNext.id);
+const insertItem = (startItemId: number, endItemId: number) => {
+    const startItem = todoLists.filter((i) => i.id === startItemId);
+    const nextIndex = getIndexOfItem(endItemId);
 
     // 삭제
-    removeItem(item.id);
+    removeItem(startItemId);
     // 원하는 위치에 item 다시 추가
-    todoLists.splice(nextIndex, 0, item);
+    todoLists.splice(nextIndex, 0, ...startItem);
 };
 
 // 목록 필터링
@@ -111,6 +109,7 @@ const filterTodoLists = (): ToDoItem[] => {
 
     return filtered;
 };
+
 // 필터링 하는 태그 토글
 const toggleTag = (clickedEl: HTMLElement) => {
     // 전체 태그 selected 해제
@@ -122,19 +121,35 @@ const toggleTag = (clickedEl: HTMLElement) => {
     filterOption = clickedEl.getAttribute('data-tag-id') as FilterOption;
 };
 
+// 클로저 함수로 현재 이벤트 발생한 위치에서 가장 가까운 to-do 아이템을 찾는다.
+const getCurrentItems = (e: Event) => {
+    const target = e.target as HTMLElement;
+    const currentItem = target.closest('.item');
+    const currentItemUnCompleted = target.closest('.item:not(.completed)');
+    const checkBtn = target.closest('.btn-check');
+    const removeBtn = target.closest('.btn-remove');
+
+    // 체크, 삭제 버튼이 아닌 곳에서만 콜백 함수 실행
+    const isNotOnButton = (cb: () => void) => {
+        if (!checkBtn && !removeBtn) cb();
+    };
+
+    return { currentItem, currentItemUnCompleted, checkBtn, removeBtn, isNotOnButton };
+};
+
 window.onload = () => {
     // 초기 렌더링
     render();
 
     // 할일 추가 버튼
-    const addButton = document.getElementById('btn-add');
+    const addButton = document.querySelector('.btn.add');
     addButton?.addEventListener('click', () => {
         addTodoItem();
         render();
     });
 
     // 전체 삭제 버튼
-    const removeAllButton = document.getElementById('btn-remove-all');
+    const removeAllButton = document.querySelector('.btn.remove-all');
     removeAllButton?.addEventListener('click', () => {
         const confirmToRemoveAll = confirm('모두 삭제 하시겠습니까?');
         if (confirmToRemoveAll) {
@@ -143,72 +158,110 @@ window.onload = () => {
         }
     });
 
-    // 태그 토글 이벤트
+    // 상태 태그 토글 이벤트
     const tags = document.querySelector('.tags');
     tags?.addEventListener('click', (e) => {
         const target = e.target as HTMLElement;
         const tag = target.closest('.tag') as HTMLElement;
 
         if (tag) {
-            console.log(tag);
             toggleTag(tag);
             render();
         }
     });
 
-
     // 아이템 마다 이벤트 위임
     const items = document.querySelector('.items');
     // click 이벤트
     items?.addEventListener('click', (e) => {
-        const target = e.target as HTMLElement;
-        const item = target.closest('.item');
-        const checkBtn = target.closest('.btn-check');
-        const removeBtn = target.closest('.btn-remove');
+        const { currentItem, checkBtn, removeBtn } = getCurrentItems(e);
 
-        if (item) {
+        if (currentItem) {
             // 할일 완료
             if (checkBtn) {
-                item.classList.toggle('completed');
+                const indexOfItem = getIndexOfItem(Number(currentItem.id));
+                todoLists[indexOfItem].isCompleted = !todoLists[indexOfItem].isCompleted;
+                currentItem.classList.toggle('completed');
+
+                render();
             }
             // 할일 삭제
             if (removeBtn) {
-                console.log(Number(item.id));
-                removeItem(Number(item.id));
+                removeItem(Number(currentItem.id));
                 render();
             }
         }
     });
-
-    // mousedown, mouseup, mousemove 이벤트
-    items?.addEventListener('mousedown', (e) => {
-        const target = e.target as HTMLElement;
-        const item = target.closest('.item');
-        const dragBtn = target.closest('.btn-drag');
-
-        if (item && dragBtn) {
-            console.log('mousedown', item);
-        }
-    });
-
-    items?.addEventListener('mouseup', (e) => {
-        const target = e.target as HTMLElement;
-        const item = target.closest('.item');
-        const dragBtn = target.closest('.btn-drag');
-
-        if (item && dragBtn) {
-            console.log('mouseup', item);
-        }
-    });
-
-    items?.addEventListener('mousemove', (e) => {
-        const target = e.target as HTMLElement;
-        const item = target.closest('.item');
-        const dragBtn = target.closest('.btn-drag');
-
-        if (item && dragBtn) {
-            console.log('mousemove', item);
-        }
-    });
 };
 
+
+let mouseStartItemId: number;
+let mouseEndItemId: number;
+let mouseMoving = false;
+
+const cancelDragging = () => {
+    const cancelKeyUp = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+            console.log('cancel');
+            mouseMoving = false;
+            const dragging = document.querySelector('.dragging') as HTMLElement;
+            const dragover = document.querySelector('.dragover') as HTMLElement;
+
+            dragging?.classList.remove('dragging');
+            dragover?.classList.remove('dragover');
+        }
+    };
+    window.addEventListener('keyup', cancelKeyUp);
+};
+
+window.addEventListener(('mouseup'), (e) => {
+    // 마우스를 뗏을 때 dragover 클래스가 붙어있던 것을 제거해준다.
+    const items = document.querySelectorAll('.item.dragover') as unknown;
+    (items as HTMLElement[]).forEach((i) => i.classList.remove('dragover'));
+
+    const { currentItemUnCompleted, isNotOnButton } = getCurrentItems(e);
+
+    isNotOnButton(() => {
+        mouseMoving = false;
+
+        if (currentItemUnCompleted) {
+            mouseEndItemId = Number(currentItemUnCompleted.id);
+
+            insertItem(mouseStartItemId, mouseEndItemId);
+            render();
+        }
+    });
+
+    const dragging = document.querySelector('.dragging') as HTMLElement;
+    dragging?.classList.remove('dragging');
+});
+
+window.addEventListener(('mousedown'), (e) => {
+    const { currentItemUnCompleted, isNotOnButton } = getCurrentItems(e);
+
+    isNotOnButton(() => {
+        mouseMoving = true;
+
+        if (currentItemUnCompleted && mouseMoving) {
+            currentItemUnCompleted.classList.add('dragging');
+
+            mouseStartItemId = Number(currentItemUnCompleted.id);
+        }
+
+        cancelDragging();
+    });
+});
+
+window.addEventListener(('mousemove'), (e) => {
+    const mouseY = e.clientY;
+
+    if (mouseMoving) {
+        // 드래깅중이 아닌 요소를 제외한 나머지 노드들의 목록을 구하고
+        const siblings = document.querySelectorAll('.item:not(.dragging)') as unknown;
+        // 그 목록들 중에서 마우스의 위치가 아이템내에 있다면 해당 아이템에 dragover 클래스를 붙여준다.
+        (siblings as HTMLElement[]).forEach((item) => {
+            const isMouseEnterInItem = mouseY <= item.offsetTop + item.offsetHeight && mouseY > item.offsetTop;
+            isMouseEnterInItem ? item.classList.add('dragover') : item.classList.remove('dragover');
+        });
+    }
+});

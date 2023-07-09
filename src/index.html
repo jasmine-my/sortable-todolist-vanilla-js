@@ -1,4 +1,4 @@
-<html>
+<html lang='ko'>
 <head>
     <meta charset='utf-8'>
     <meta name='viewport'
@@ -12,60 +12,32 @@
     <section class='input-filed'>
         <label>
             <input type='text' class='new-item' id='new-item-content' />
-            <button type='button' class='btn add' id='btn-add'>추가하기</button>
+            <button type='button' class='btn add'>추가하기</button>
         </label>
     </section>
 
     <section class='info'>
         <div class='filter-wrap'>
-            <p class='total-numbers'>총 3개</p>
             <div class='tags'>
                 <span class='tag selected' data-tag-id='all'>전체</span>
                 <span class='tag' data-tag-id='completed'>완료</span>
                 <span class='tag' data-tag-id='uncompleted'>미완료</span>
             </div>
+            <p class='total-numbers'>총 0개</p>
+
         </div>
-        <button type='button' class='btn remove-all' id='btn-remove-all'>
-            <i class='icon fa-solid  fa-trash'></i>
-            <span>전체 삭제(3)</span>
+        <button type='button' class='btn remove-all'>
+            <span>전체 삭제(0)</span>
         </button>
     </section>
 
     <section class='item-list'>
-        <ul class='items'>
-            <li class='item completed'>
-                <div class='left'>
-                    <span class='btn-check'></span>
-                    <p class='content'>아침먹기</p>
-                </div>
-                <div class='right'>
-                    <span class='btn-remove'></span>
-                    <span class='btn-drag'></span>
-                </div>
-            </li>
-            <li class='item dragover uncompleted'>
-                <div class='left'>
-                    <span class='btn-check'></span>
-                    <p class='content'>점심먹기</p>
-                </div>
-                <div class='right'>
-                    <span class='btn-remove'></span>
-                    <span class='btn-drag'></span>
-                </div>
-            </li>
-            <li class='item dragging uncompleted'>
-                <div class='left'>
-                    <span class='btn-check'></span>
-                    <p class='content'>저녁먹기</p>
-                </div>
-                <div class='right'>
-                    <span class='btn-remove'></span>
-                    <span class='btn-drag'></span>
-                </div>
-            </li>
-        </ul>
+        <ul class='items'></ul>
     </section>
 </div>
-<script src='index.ts'></script>
+<script type='jscript' src='index.ts'></script>
+<script type='jscript' src='actions/mouseAction.ts'></script>
+<script type='jscript' src='actions/listAction.ts'></script>
+<script type='jscript' src='actions/mappingAction.ts'></script>
 </body>
 </html>

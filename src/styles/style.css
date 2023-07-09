@@ -18,8 +18,7 @@ body ul {
 .box {
   border: 1px solid black;
   border-radius: 4px;
-  width: 80%;
-  min-width: 600px;
+  width: 600px;
   margin: 60px auto;
   padding: 28px;
 }
@@ -64,7 +63,9 @@ body ul {
   height: 30px;
 }
 .box .info .filter-wrap .total-numbers {
+  min-width: 44px;
   line-height: 30px;
+  font-size: 14px;
 }
 .box .info .filter-wrap > .tags {
   height: 30px;
@@ -102,6 +103,7 @@ body ul {
   gap: 8px;
 }
 .box .item-list .items .item {
+  width: 566px;
   border: 1px solid gray;
   border-radius: 4px;
   padding: 4px 16px;
@@ -109,6 +111,13 @@ body ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.box .item-list .items .item.dragging {
+  background: rgba(0, 0, 0, 0.15);
+  opacity: 30%;
+}
+.box .item-list .items .item.dragover {
+  background: rgba(0, 0, 0, 0.15);
 }
 .box .item-list .items .item .left {
   flex: 1;
@@ -118,10 +127,14 @@ body ul {
   align-items: center;
 }
 .box .item-list .items .item .left .btn-check {
+  cursor: pointer;
   width: 20px;
   height: 20px;
   background: url("../icons/check-off.svg") center center no-repeat;
   background-size: cover;
+}
+.box .item-list .items .item .left .content {
+  user-select: none;
 }
 .box .item-list .items .item .right {
   display: flex;
@@ -148,13 +161,6 @@ body ul {
 }
 .box .item-list .items .item.completed .content {
   text-decoration: line-through;
-}
-.box .dragging {
-  background: rgba(0, 0, 0, 0.15);
-  opacity: 30%;
-}
-.box .dragover {
-  background: rgba(0, 0, 0, 0.15);
 }
 
 /*# sourceMappingURL=style.css.map */

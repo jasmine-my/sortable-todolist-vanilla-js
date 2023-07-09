@@ -24,7 +24,7 @@ module.exports = {
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
         // 절대 경로 별칭 등록
         alias: {
-            '~components': getAbsolutePath('src/components/'),
+            '~actions': getAbsolutePath('src/actions/'),
             '~styles': getAbsolutePath('src/styles/'),
         },
     },
@@ -75,12 +75,7 @@ module.exports = {
             // svg 로더 설정
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                exclude: /node_modules/,
-                loader: 'url-loader',
-                options: {
-                    limit: 10000,
-                    name: '[hash]-[name].[ext]',
-                },
+                loader: 'file-loader',
             }
         ],
     },
