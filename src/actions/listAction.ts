@@ -44,8 +44,7 @@ const render = () => {
         total.innerHTML = `총 ${list.length}개`;
 
         removeAllButton.innerHTML = `
-            <i class='icon fa-solid  fa-trash'></i>
-            <span>전체 삭제(${list.length})</span>
+            <span>${filterOption === 'completed' ? '완료' : filterOption === 'uncompleted' ? '미완료' : '전체'} 삭제(${list.length})</span>
         `;
 
         filed.focus();
@@ -53,9 +52,8 @@ const render = () => {
 };
 
 const addTodoItem = () => {
-    const content = document.getElementsByTagName('input')[0];
+    const content = document.querySelector('.new-item') as HTMLInputElement;
     const value = content.value;
-
     if (value.length > 0) {
         const newItem: ToDoItem = {
             id: Math.random(),
@@ -127,12 +125,13 @@ const getCurrentItems = (e: Event) => {
     const checkBtn = target.closest('.btn-check');
     const removeBtn = target.closest('.btn-remove');
 
+
     // 체크, 삭제 버튼이 아닌 곳에서만 콜백 함수 실행
     const isNotOnButton = (cb: () => void) => {
         if (!checkBtn && !removeBtn) cb();
     };
 
-    return { currentItem, currentItemUnCompleted, checkBtn, removeBtn, isNotOnButton };
+    return {currentItem, currentItemUnCompleted, checkBtn, removeBtn, isNotOnButton};
 };
 
 export {

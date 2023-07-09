@@ -1,4 +1,4 @@
-import { getCurrentItems, insertItem, render } from './listAction';
+import {addTodoItem, getCurrentItems, insertItem, render} from './listAction';
 
 let mouseStartItemId: number;
 let mouseEndItemId: number;
@@ -7,7 +7,7 @@ let mouseMoving = false;
 const cancelDragging = () => {
     const cancelKeyUp = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
-            console.log('cancel');
+            console.log(':::Key Escape:::');
             mouseMoving = false;
             const dragging = document.querySelector('.dragging') as HTMLElement;
             const dragover = document.querySelector('.dragover') as HTMLElement;
@@ -18,6 +18,15 @@ const cancelDragging = () => {
     };
     window.addEventListener('keyup', cancelKeyUp);
 };
+
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.isComposing) {
+        e.preventDefault();
+        console.log(':::Key Enter:::')
+        addTodoItem();
+        render();
+    }
+})
 
 window.addEventListener(('mouseup'), (e) => {
     // 마우스를 뗏을 때 dragover 클래스가 붙어있던 것을 제거해준다.

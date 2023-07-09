@@ -3,10 +3,13 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const getAbsolutePath = (target) => path.resolve(__dirname, target);
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const isDevMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
+    // 파일 읽어 들이는 진입 설정
     entry: './src/index.ts',
+    // 결과물을 반환하는 설정
     output: {
         // 최종 번들링된 자바스크립트
         filename: 'main.js',
@@ -19,6 +22,11 @@ module.exports = {
     // 템플릿으로 설정할 html파일 위치 설정
     plugins: [
         new HtmlWebpackPlugin({template: 'src/index.html'}),
+        new CopyPlugin({
+            patterns: [
+                {from: 'static'} // static 폴더 안의 내용이 dist로 복사되어 들어가도록 한다.
+            ]
+        })
     ],
     resolve: {
         // 생략 가능한 확장자
@@ -75,8 +83,8 @@ module.exports = {
             },
             // svg 로더 설정
             {
-                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                loader: 'file-loader',
+                test: /\.svg/,
+                type: 'asset/inline'
             }
         ],
     },

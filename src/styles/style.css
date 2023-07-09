@@ -130,7 +130,7 @@ body ul {
   cursor: pointer;
   width: 20px;
   height: 20px;
-  background: url("../icons/check-off.svg") center center no-repeat;
+  background: url("../../static/icons/check-off.svg") center center no-repeat;
   background-size: cover;
 }
 .box .item-list .items .item .left .content {
@@ -146,17 +146,17 @@ body ul {
 .box .item-list .items .item .right .btn-drag {
   width: 20px;
   height: 20px;
-  background: url("../icons/grid.svg") center center no-repeat;
+  background: url("../../static/icons/grid.svg") center center no-repeat;
   background-size: cover;
 }
 .box .item-list .items .item .right .btn-remove {
   width: 20px;
   height: 20px;
-  background: url("../icons/trash.svg") center center no-repeat;
+  background: url("../../static/icons/trash.svg") center center no-repeat;
   background-size: cover;
 }
 .box .item-list .items .item.completed .btn-check {
-  background: url("../icons/check-on.svg") center center no-repeat;
+  background: url("../../static/icons/check-on.svg") center center no-repeat;
   background-size: cover;
 }
 .box .item-list .items .item.completed .content {
