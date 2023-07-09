@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const isDevMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-    entry: './src/index.ts',
+    entry: './src/windowAction.ts',
     output: {
         // 최종 번들링된 자바스크립트
         filename: 'main.js',

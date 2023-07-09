@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Sortable To-do List using Vanilla Javascript",
   "homepage": "https://github.com/jasmine-my/sortable-todolist-vanilla-js#readme",
-  "main": "src/index.ts",
+  "main": "src/actions/windowAction.ts",
   "scripts": {
     "serve": "webpack serve --open --mode=development",
     "build": "webpack --mode=production",
