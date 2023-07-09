@@ -13,7 +13,8 @@
 * [느낀점](#느낀점)
 
 
-![메인](https://github.com/jasmine-my/sortable-todolist-vanilla-js/assets/83268528/e04691c3-16fe-48dc-b19d-480be4c8e810)
+![메인](https://github.com/jasmine-my/sortable-todolist-vanilla-js/assets/83268528/ebb51404-26d3-43ca-b2da-bddb96b22667)
+
 
 
 ## 요구사항
@@ -79,7 +80,8 @@
   - [x] `전체`, `완료 전`, `완료` Todo 아이템을 필터 할 수 있는 기능을 제공합니다.
   - [x] 필터 조건에 맞는 Todo 아이템의 개수를 출력합니다.
   - [x] 완료 된 Todo 항목을 제거하는 삭제 기능을 제공합니다. -> 필터별로 조회 후 필터링된 결과를 전부 삭제할 수 있는 기능으로 변경했습니다.
-    - ![태그](https://github.com/jasmine-my/sortable-todolist-vanilla-js/assets/83268528/cd0ffd23-b511-45fb-9a21-80650e8f08a9)
+    - ![태그](https://github.com/jasmine-my/sortable-todolist-vanilla-js/assets/83268528/699989f1-5fd3-4ff6-96b0-1b0bf25b83ed)
+
 
 
 #### 2-4. Drag & Drop 기능
