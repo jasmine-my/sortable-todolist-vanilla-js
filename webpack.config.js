@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const isDevMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-    entry: './src/windowAction.ts',
+    entry: './src/index.ts',
     output: {
         // 최종 번들링된 자바스크립트
         filename: 'main.js',
@@ -18,7 +18,7 @@ module.exports = {
     devtool: isDevMode ? 'eval-source-map' : 'source-map',
     // 템플릿으로 설정할 html파일 위치 설정
     plugins: [
-        new HtmlWebpackPlugin({ template: 'src/index.html' }),
+        new HtmlWebpackPlugin({template: 'src/index.html'}),
     ],
     resolve: {
         // 생략 가능한 확장자
@@ -51,7 +51,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env'],
+                        presets: ['@babel/preset-env', {useBuiltIns: 'usage',}],
                     },
                 },
             },
