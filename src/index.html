@@ -4,8 +4,6 @@
     <meta name='viewport'
           content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
     <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-    <!--  fontawsome 아이콘   -->
-    <script src='https://use.fontawesome.com/releases/v6.4.0/js/all.js'></script>
     <title>Sortable To-do List</title>
 </head>
 <body>
@@ -37,38 +35,32 @@
         <ul class='items'>
             <li class='item completed'>
                 <div class='left'>
-                    <div class='check-box'>
-                        <i class='icon fa-solid fa-square-check'></i>
-                    </div>
+                    <span class='btn-check'></span>
                     <p class='content'>아침먹기</p>
                 </div>
                 <div class='right'>
-                    <i class='icon fa-solid fa-trash'></i>
-                    <i class='icon fa-solid fa-grip-vertical'></i>
+                    <span class='btn-remove'></span>
+                    <span class='btn-drag'></span>
                 </div>
             </li>
             <li class='item dragover uncompleted'>
                 <div class='left'>
-                    <div class='check-box'>
-                        <i class='icon fa-regular fa-square-check'></i>
-                    </div>
+                    <span class='btn-check'></span>
                     <p class='content'>점심먹기</p>
                 </div>
                 <div class='right'>
-                    <i class='icon fa-solid  fa-trash'></i>
-                    <i class='icon fa-solid fa-grip-vertical'></i>
+                    <span class='btn-remove'></span>
+                    <span class='btn-drag'></span>
                 </div>
             </li>
             <li class='item dragging uncompleted'>
                 <div class='left'>
-                    <div class='check-box'>
-                        <i class='icon fa-regular fa-square-check'></i>
-                    </div>
+                    <span class='btn-check'></span>
                     <p class='content'>저녁먹기</p>
                 </div>
                 <div class='right'>
-                    <i class='icon fa-solid  fa-trash'></i>
-                    <i class='icon fa-solid fa-grip-vertical'></i>
+                    <span class='btn-remove'></span>
+                    <span class='btn-drag'></span>
                 </div>
             </li>
         </ul>

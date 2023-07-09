@@ -19,7 +19,7 @@ body ul {
   border: 1px solid black;
   border-radius: 4px;
   width: 80%;
-  max-width: 600px;
+  min-width: 600px;
   margin: 60px auto;
   padding: 28px;
 }
@@ -115,13 +115,13 @@ body ul {
   display: flex;
   gap: 12px;
   justify-content: flex-start;
-  align-content: center;
-}
-.box .item-list .items .item .left .check-box {
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
   align-items: center;
+}
+.box .item-list .items .item .left .btn-check {
+  width: 20px;
+  height: 20px;
+  background: url("../icons/check-off.svg") center center no-repeat;
+  background-size: cover;
 }
 .box .item-list .items .item .right {
   display: flex;
@@ -129,6 +129,22 @@ body ul {
 }
 .box .item-list .items .item .right span {
   cursor: pointer;
+}
+.box .item-list .items .item .right .btn-drag {
+  width: 20px;
+  height: 20px;
+  background: url("../icons/grid.svg") center center no-repeat;
+  background-size: cover;
+}
+.box .item-list .items .item .right .btn-remove {
+  width: 20px;
+  height: 20px;
+  background: url("../icons/trash.svg") center center no-repeat;
+  background-size: cover;
+}
+.box .item-list .items .item.completed .btn-check {
+  background: url("../icons/check-on.svg") center center no-repeat;
+  background-size: cover;
 }
 .box .item-list .items .item.completed .content {
   text-decoration: line-through;

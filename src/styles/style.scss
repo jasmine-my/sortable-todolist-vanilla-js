@@ -22,7 +22,7 @@ body {
   border: 1px solid black;
   border-radius: 4px;
   width: 80%;
-  max-width: 600px;
+  min-width: 600px;
   margin: 60px auto;
   padding: 28px;
 
@@ -135,13 +135,13 @@ body {
           display: flex;
           gap: 12px;
           justify-content: flex-start;
-          align-content: center;
+          align-items: center;
 
-          .check-box {
-            font-size: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+          .btn-check {
+            width: 20px;
+            height: 20px;
+            background: url("../icons/check-off.svg") center center no-repeat;
+            background-size: cover;
           }
         }
 
@@ -151,9 +151,26 @@ body {
           span {
             cursor: pointer;
           }
+
+          .btn-drag {
+            width: 20px;
+            height: 20px;
+            background: url("../icons/grid.svg") center center no-repeat;
+            background-size: cover;
+          }
+          .btn-remove {
+            width: 20px;
+            height: 20px;
+            background: url("../icons/trash.svg") center center no-repeat;
+            background-size: cover;
+          }
         }
 
         &.completed {
+          .btn-check {
+            background: url("../icons/check-on.svg") center center no-repeat;
+            background-size: cover;
+          }
           .content {
             text-decoration: line-through;
           }
