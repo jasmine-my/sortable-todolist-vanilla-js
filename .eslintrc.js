@@ -31,21 +31,9 @@ module.exports = {
 	],
 	'rules': {
 		'@typescript-eslint/no-var-requires': 0,
-		// 'indent': [
-		// 	'error',
-		// 	'tab'
-		// ],
-		// 'linebreak-style': [
-		// 	'error',
-		// 	'unix'
-		// ],
-		// 'quotes': [
-		// 	'error',
-		// 	'single'
-		// ],
-		// 'semi': [
-		// 	'error',
-		// 	'always'
-		// ]
+		'linebreak-style': [
+			'error',
+			'unix'
+		],
 	}
 };

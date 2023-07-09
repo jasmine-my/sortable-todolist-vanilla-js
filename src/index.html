@@ -13,8 +13,8 @@
 <div class='box'>
     <section class='input-filed'>
         <label>
-            <input type='text' class='new-item' />
-            <button type='button' class='btn add'>추가하기</button>
+            <input type='text' class='new-item' id='new-item-content' />
+            <button type='button' class='btn add' id='btn-add'>추가하기</button>
         </label>
     </section>
 
@@ -22,11 +22,12 @@
         <div class='filter-wrap'>
             <p class='total-numbers'>총 3개</p>
             <div class='tags'>
-                <span class='tag red selected'>미완료</span>
-                <span class='tag blue selected'>완료</span>
+                <span class='tag selected' data-tag-id='all'>전체</span>
+                <span class='tag' data-tag-id='completed'>완료</span>
+                <span class='tag' data-tag-id='uncompleted'>미완료</span>
             </div>
         </div>
-        <button type='button' class='btn remove-all'>
+        <button type='button' class='btn remove-all' id='btn-remove-all'>
             <i class='icon fa-solid  fa-trash'></i>
             <span>전체 삭제(3)</span>
         </button>
@@ -46,7 +47,7 @@
                     <i class='icon fa-solid fa-grip-vertical'></i>
                 </div>
             </li>
-            <li class='item dragover'>
+            <li class='item dragover uncompleted'>
                 <div class='left'>
                     <div class='check-box'>
                         <i class='icon fa-regular fa-square-check'></i>
@@ -58,7 +59,7 @@
                     <i class='icon fa-solid fa-grip-vertical'></i>
                 </div>
             </li>
-            <li class='item dragging'>
+            <li class='item dragging uncompleted'>
                 <div class='left'>
                     <div class='check-box'>
                         <i class='icon fa-regular fa-square-check'></i>
