@@ -144,7 +144,11 @@
           return { currentItem, currentItemUnCompleted, checkBtn, removeBtn, isNotOnButton };
       };
     ```     
-3. 사용자가 서비스와 상호작용 하는 느낌을 받 수 있게 alert과 confirm을 사용했습니다.
+3. 사용자가 서비스와 상호작용 하는 느낌을 받 수 있게 `alert`과 `confirm`을 사용했습니다.
+   ![image](https://github.com/jasmine-my/sortable-todolist-vanilla-js/assets/83268528/e53d37b5-5360-452e-99ca-9d17456c4bda)
+
+   ![image](https://github.com/jasmine-my/sortable-todolist-vanilla-js/assets/83268528/dede2be2-314c-417c-8e46-8b497a759670)
+
   - ```javascript
     // 확인 버튼을 눌렀을때 모두 삭제 기능이 동작하도록 구현.
     const confirmToRemoveAll = confirm('모두 삭제 하시겠습니까?');
