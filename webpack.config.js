@@ -12,6 +12,7 @@ module.exports = {
         filename: 'main.js',
         // dist를 배포용 폴더로 사용
         path: path.resolve(__dirname, 'dist'),
+        clean: true,
     },
     // 환경에 따라 다른 devtool 옵션을 설정한다.
     devtool: isDevMode ? 'eval-source-map' : 'source-map',
