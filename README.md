@@ -13,7 +13,9 @@
 * [느낀점](#느낀점)
 
 
-// 영상
+![메인](https://github.com/jasmine-my/sortable-todolist-vanilla-js/assets/83268528/ebb51404-26d3-43ca-b2da-bddb96b22667)
+
+
 
 ## 요구사항
 
@@ -70,7 +72,7 @@
     - [x] `완료 상태`와 `완료 전` 상태를 구분할 수 있도록 '취소선'으로 표현
     - [x] 삭제 버튼 클릭시 해당되는 Todo 아이템을 삭제.
     - [x] checkbox를 토글 방식으로 상태를 변경할 수 있습니다.
-    - [ ] 완료된 Todo 아이템은 Todo 목록의 하단으로 이동시킵니다.
+    - [x] 완료된 Todo 아이템은 Todo 목록의 하단으로 이동시킵니다.
     - [ ] 이미 완료된 Todo 아이템을 `완료 전` 상태로 되돌린 경우, 등록된 시간 기준의 위치로 되돌아가도록 합니다.
 
 #### 2-3. 정보부
@@ -78,6 +80,9 @@
   - [x] `전체`, `완료 전`, `완료` Todo 아이템을 필터 할 수 있는 기능을 제공합니다.
   - [x] 필터 조건에 맞는 Todo 아이템의 개수를 출력합니다.
   - [x] 완료 된 Todo 항목을 제거하는 삭제 기능을 제공합니다. -> 필터별로 조회 후 필터링된 결과를 전부 삭제할 수 있는 기능으로 변경했습니다.
+    - ![태그](https://github.com/jasmine-my/sortable-todolist-vanilla-js/assets/83268528/699989f1-5fd3-4ff6-96b0-1b0bf25b83ed)
+
+
 
 #### 2-4. Drag & Drop 기능
 마우스 이벤트만으로도 드래그앤 드롭 기능을 구현했습니다. 다만 preview 기능은 구현하지 못했습니다.
@@ -103,7 +108,7 @@
 | 폴더           | 용도                                                                                        |
 | -------------- | --------------------------------------------------------------------- |
 | **actions**    | 관심사나 기능별로 분리된 구현부                       |
-| **styles**      | scss 스타일링 파일 보관             |
+| **styles**      | scss 스타일링 파일 보관             |
 | **index.html**   | 프로젝트 템플릿  |
 | **index.ts**   | webpack 진입 지점, actions 및 scss 파일을 한번에 불러와서 사용하는 파일 |
 
@@ -139,7 +144,11 @@
           return { currentItem, currentItemUnCompleted, checkBtn, removeBtn, isNotOnButton };
       };
     ```     
-3. 사용자가 서비스와 상호작용 하는 느낌을 받 수 있게 alert과 confirm을 사용했습니다.
+3. 사용자가 서비스와 상호작용 하는 느낌을 받 수 있게 `alert`과 `confirm`을 사용했습니다.
+   ![image](https://github.com/jasmine-my/sortable-todolist-vanilla-js/assets/83268528/e53d37b5-5360-452e-99ca-9d17456c4bda)
+
+   ![image](https://github.com/jasmine-my/sortable-todolist-vanilla-js/assets/83268528/dede2be2-314c-417c-8e46-8b497a759670)
+
   - ```javascript
     // 확인 버튼을 눌렀을때 모두 삭제 기능이 동작하도록 구현.
     const confirmToRemoveAll = confirm('모두 삭제 하시겠습니까?');
