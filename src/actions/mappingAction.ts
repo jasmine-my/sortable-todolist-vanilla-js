@@ -16,7 +16,6 @@ window.onload = () => {
     // 할일 추가 버튼
     const addButton = document.querySelector('.btn.add');
     addButton?.addEventListener('click', () => {
-        console.log('c추가')
         addTodoItem();
         render();
     });

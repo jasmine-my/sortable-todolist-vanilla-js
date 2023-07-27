@@ -103,6 +103,8 @@ const filterTodoLists = (): ToDoItem[] => {
         filtered = todoLists.filter((item) => !item.isCompleted);
     }
 
+    filtered.sort((a,b) => Number(a.isCompleted) - Number(b.isCompleted));
+
     return filtered;
 };
 
